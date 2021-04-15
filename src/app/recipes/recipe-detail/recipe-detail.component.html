@@ -1,0 +1,54 @@
+
+<div
+*ngIf="itemtoshow" 
+class="row">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 ">
+            <img
+            [src]="itemtoshow.imagePath "
+            [alt]=" itemtoshow.name " class="img-responsive"
+            [ngStyle]="{'max-height':'400px' }">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 ">
+            <h1>{{itemtoshow.name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+                <div class="btn-group" appDropdown>
+                    <button
+                    class="btn btn-primary dropdown-toggle"
+                    >Manage Recipe <span class="caret"></span></button>
+                    <ul class="dropdown-menu" >
+                        <li><a [ngStyle]="{'cursor':'pointer'}" 
+                        (click)="Toshoppinglist()">To Shopping List</a></li>
+                        <li [ngStyle]="{'cursor':'pointer'}" [routerLink]="['edit']"><a >Edit Recipe</a></li>
+                        <li [ngStyle]="{'cursor':'pointer'}" (click)="onDelete()"><a >Delete Recipe</a></li>
+                    </ul>
+                </div>      
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12" >
+            <p [ngStyle]="{'font-size':'20px'}">{{itemtoshow.description}} </p>   
+         </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item"
+                *ngFor="let ingredient of itemtoshow.ingredients">
+                {{ingredient.name}} ({{ingredient.amount}})
+              
+              </li>
+            </ul>
+    </div>
+    
+    </div>
+
+</div>
+
+
